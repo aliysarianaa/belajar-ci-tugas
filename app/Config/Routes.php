@@ -23,7 +23,7 @@ $routes->group('produk', ['filter'=>'auth'], function($routes){
 
     });
     
-    $routes->group('keranjang', ['filter' => 'auth'], function ($routes) {
+$routes->group('keranjang', ['filter' => 'auth'], function ($routes) {
         $routes->get('', 'TransaksiController::index');
         $routes->post('', 'TransaksiController::cart_add');
         $routes->post('edit', 'TransaksiController::cart_edit');
@@ -31,4 +31,7 @@ $routes->group('produk', ['filter'=>'auth'], function($routes){
         $routes->get('clear', 'TransaksiController::cart_clear');
     });
 
-   
+$routes->get('checkout', 'TransaksiController::checkout', ['filter' => 'auth']);
+$routes->get('getcity', 'TransaksiController::getcity', ['filter'=> 'auth' ]);
+$routes->get('getcost', 'TransaksiController::getcost', ['filter'=> 'auth' ]);
+$routes->post('buy', 'TransaksiController::buy', ['filter' => 'auth']);
