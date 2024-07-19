@@ -23,6 +23,11 @@ class ProdukController extends BaseController
     }
     public function create()
     {
+        $rules = [
+            'nama' => 'required|min_length[3]',
+            'harga' => 'required|min_length|numeric',
+            'jumlah' => 'required|min_length|numeric',
+        ];
         $dataFoto = $this->request->getFile('foto');
     
         $dataForm = [

@@ -36,6 +36,19 @@
             </a>
         </li> <!-- End Profile Nav -->
 
+        <?php
+        if (session()->get('role') == 'admin') {
+        ?>
+            <li class="nav-item">
+                <a class="nav-link <?php echo (uri_string() == 'transaksi') ? "" : "collapsed" ?>" href="transaksi">
+                    <i class="bi bi-folder-fill"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li><!-- End Produk Nav -->
+        <?php
+        }
+        ?>
+
         <li class="nav-item">
             <a class="nav-link <?php echo (uri_string() == 'faq') ? "" : "collapsed" ?>" href="faq">
                 <i class="bi bi-question-circle"></i>
