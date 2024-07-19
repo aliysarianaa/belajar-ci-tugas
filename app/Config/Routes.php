@@ -41,4 +41,11 @@ $routes->get('contact', 'Home::contact', ['filter' => 'auth']);
 
 $routes->group('api', function ($routes) {
     $routes->post('monthly', 'ApiController::monthly');
+    $routes->post('yearly', 'ApiController::yearly');
+});
+
+$routes->group('transaksi', ['filter' => 'auth'], function ($routes){
+    $routes->get('', 'TransaksiController::getAllTransaksi'); 
+    $routes->post('edit/(:any)', 'TransaksiController::edit/$1'); 
+    $routes->get('download', 'TransaksiController::download');
 });

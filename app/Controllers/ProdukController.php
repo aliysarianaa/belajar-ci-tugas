@@ -25,9 +25,10 @@ class ProdukController extends BaseController
     {
         $rules = [
             'nama' => 'required|min_length[3]',
-            'harga' => 'required|min_length|numeric',
-            'jumlah' => 'required|min_length|numeric',
+            'harga' => 'required|numeric',
+            'jumlah' => 'required|numeric',
         ];
+        if ($this->validate($rules)) {
         $dataFoto = $this->request->getFile('foto');
     
         $dataForm = [
@@ -46,6 +47,11 @@ class ProdukController extends BaseController
         $this->product->insert($dataForm);
     
         return redirect('produk')->with('success', 'Data Berhasil Ditambah');
+        
+    } else {
+            session()->setFlashdata('failed', $this->validator->listErrors());
+            return redirect()->back();
+        }
     } 
 
     public function edit($id)
